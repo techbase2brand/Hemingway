@@ -1,0 +1,317 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.coffey {
+  text-align: left;
+  margin-left: 50px;
+  font-family: Geist;
+}
+
+.browse {
+  font-family: Geist;
+  font-size: 18px;
+  font-weight: 600;
+  margin: -11px;
+}
+
+.anchor-field {
+  margin-top: -5px;
+  font-size: 27px;
+  gap: 11px;
+  display: flex;
+  justify-content: center;
+}
+
+.frame {
+  font-family: 'Geist';
+  font-size: '16px';
+  font-weight: 600;
+  line-height: '24px', ;
+  letter-spacing: '0px';
+  text-align: 'left'
+}
+
+.titles {
+  font-family: Geist;
+  text-align: justify;
+  margin: 4% 34%;
+  font-size: 26px;
+}
+
+.frame-open {
+  margin: auto;
+}
+
+.number-size {
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  gap: '8px';
+  background-color: #00B7FF;
+  color: #FFFFFF;
+  margin-left: 28px;
+}
+
+.paragraph {
+  display: flex;
+  align-Items: center;
+  background: #D1F2FF;
+  min-height: 4pc;
+  width: 18pc;
+  gap: 1pc;
+  margin-top: 15px;
+  border-radius: 10px;
+  margin-left: 16px;
+}
+
+.sidebar-tab {
+  background: #FBFBFB;
+  width: auto;
+  border: 1px solid #EAEAEA;
+}
+
+.container-b {
+  width: 51%;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 24px;
+}
+
+.business-idea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: justify;
+  margin: 17px;
+}
+
+.business-idea h2 {
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.business-idea p {
+  margin-bottom: 0.5rem;
+}
+
+.upvotes {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.template {
+  text-align: justify;
+  margin-left: 27px;
+  font-size: larger;
+}
+
+.first-frame {
+  font-family: Arial, sans-serif;
+  margin: 55px 71px 0 32px;
+
+}
+
+.container {
+  width: 42%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #cccccc;
+  text-align: justify;
+}
+
+.tweet {
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.real {
+  background-color: #e1f5e1;
+  color: #3c763d;
+}
+
+.button-th {
+  padding: 16px 65px;
+  background-color: #337ab7;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 9px;
+  display: flex;
+  margin: 0 auto;
+  font-size: large;
+}
+
+button:hover {
+  background-color: #286090;
+}
+
+.drop {
+  margin-left: 13px;
+  color: #f39b57d9;
+}
+
+@media only screen and (min-width: 425px) and (max-width: 1024px) {
+  .container-b {
+    width: 90%;
+  }
+  .container {
+    width: 100%;
+  }
+  h1 {
+    font-size: 16px;
+  }
+  .button-th {
+    padding: 11px 31px;
+  }
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 2560px) {
+  .container {
+    width: 78%;
+    font-size: 27px;
+  }
+}
+
+
+/* forth................... */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.container-f {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.base-tamp-txt {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: 9px;
+  padding: 10px 10px 10px 10px;
+}
+
+p.hed-33 {
+  padding: 10px;
+  font-family: Georgia;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+p.gauravaj221 {
+  margin-left: 20px;
+}
+
+p.gauravaj {
+  margin-left: 40px;
+  line-height: 1.3;
+  font-size: 18px;
+  font-family: Georgia;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+fieldset.feildsss {
+border-radius: 8px;
+margin-bottom: 20px;
+}
+
+legend {
+margin: 0px 0 0 21px;
+padding: 5px;
+color: gray;
+font-family: poppins;
+font-size: 14px;
+}
+
+h4.manage {
+  font-family: Georgia;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 36px;
+}
+
+h2.princegauravaj-id {
+  font-family: Georgia;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.love {
+font-family: Georgia;
+font-size: 18px;
+font-weight: 600;
+line-height: 26px;
+}
+h3#or-pr {
+font-size: 20px;
+font-family: Georgia;
+}
+.btn {
+text-align: center;
+margin-top: 30px;
+}
+button.btn-mob {
+padding: 10px 43px;
+border-radius: 5px;
+border-style: none;
+color: white;
+font-size: 18px;
+background: #5f5fd2;
+font-family: poppins;
+}
+section.setall {
+margin: 30px 0;
+}
