@@ -5,12 +5,15 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const drawerWidth = 320;
 
-export default function FirstDesign() {
-
+export default function Dummy() {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/review')
+    }
 
     return (
         <Box sx={{ display: 'flex', variant: "h6" }}>
@@ -26,24 +29,13 @@ export default function FirstDesign() {
                     <div
                         className='titles'
                     >
-                        <span style={{ background: '#D1F2FF' }}>Coffey helps you</span> Write
-                        <span style={{ background: '#C7FFDD' }}> Catchy</span>{' '}
-                        <span style={{ background: '#EDDFFF' }}>Reddit titles so that more</span>{' '}
-                        <span style={{ background: '#FFEFD0' }}>people</span> see{' '}
-                        <span style={{ background: '#FFD9D9' }}>your post.</span>
-                    </div>
-                    <div className='anchor-field'>
-                        <div>
-                            <Link to='/second' style={{ color: '#2E58FF' }}>
-                                Start with a template
-                            </Link>
-                        </div>
-                        <span>or</span>
-                        <div className='anchor-field-2'>
-                            <a href="#" style={{ color: '#2E58FF' }}>
-                                Write from scratch
-                            </a>
-                        </div>
+                        <span style={{ background: '#D1F2FF' }}>I made a website where you have to guest </span> if a
+                        <span style={{ background: '#C7FFDD' }}> Trump tweet</span>is
+                        <span style={{ background: '#EDDFFF' }}> real or fake.</span>
+                        <span style={{ background: '#FFEFD0' }}>I compiled</span> 40 crazy
+                        <span style={{ background: '#FFD9D9' }}>real tweets and 40</span>fake tweets.
+                        <span style={{ background: '#FFD9D9' }}>real tweets and 40</span>fake tweets.
+                        It’s <span style={{ background: '#FFEFD0' }}> surprisingly hard!</span>
                     </div>
                 </Typography>
             </Box>
@@ -60,7 +52,7 @@ export default function FirstDesign() {
                 variant="permanent"
                 anchor="right"
             >
-                <Button variant="contained" className='button-para'>
+                <Button variant="contained" className='button-para' onClick={handleClick}>
                     Paraphrase
                 </Button>
                 <Link to='/second' style={{ textDecoration: 'none' }}>
