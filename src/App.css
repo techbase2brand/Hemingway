@@ -1,11 +1,194 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-Black.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist UltraBlack';
+  src: url('../public/font/Geist-UltraBlack.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-UltraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../public/font/Geist-Regular_1.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.inputText p {
+  line-height: 1.6;
+  font-family: 'Gelasio', serif;
+  font-size: 28px;
+}
+
+.button-center {
+  height: 51px !important;
+  width: 206px !important;
+  border-radius: 12px !important;
+  left: 271px !important;
+  padding: 14px 32px 14px 32px !important;
+  gap: 8px !important;
+  background-color: #2E58FF;
+  color: #FFFFFF;
+  font-weight: 600 !important;
+  font-family: Geist !important;
+  font-size: 20px !important;
+  text-transform: capitalize !important;
+  top: 25px;
+}
+
+.choose_text {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.choose_text h2 {
+  font-size: 24px;
+  margin-bottom: 0;
+
+}
+
+h5.text_heading {
+  font-size: 18px;
+  font-family: Georgia !important;
+}
+
+.modal-content {
+  border-radius: 16px !important;
+}
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+button.close {
+  opacity: 1;
+}
+
+button.close span {
+  border-radius: 8px;
+  border: 1px solid #E4E5E9;
+  padding: 11px 9px;
+  display: block;
+  line-height: 0.3;
+  padding-bottom: 15px;
+}
+
+p.upvote {
+  color: #9CA1B4;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  margin-bottom: 0;
+}
+
+.border.p-3.border-rounded {
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.btn.focus,
+.btn:focus {
+  box-shadow: none !important;
+}
+
+.entre {
+  margin-left: 5px;
+}
+
+.entre button {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  color: #FF6314 !important;
+}
+
+b.ml-2.mr-2 {
+  font-size: 28px;
+  font-family: 'Gelasio', serif;
+  font-weight: 400 !important;
+}
+
+a.link {
+  color: #2E58FF !important;
+  text-decoration: underline !important;
+  font-size: 28px;
+  cursor: pointer;
+  font-family: 'Gelasio', serif;
 }
 
 .anchor-field {
@@ -15,27 +198,40 @@
   font-weight: 400;
   font-size: 28px;
   line-height: 74px;
-  margin-left: 420px;
 }
 
 .titles {
   text-align: justify;
   width: 600px;
   height: 84px;
-  margin-left: 420px;
   font-family: Georgia;
   font-size: 28px;
   line-height: 42px;
 }
 
+.css-18sg6k4-MuiPaper-root-MuiDrawer-paper {
+  z-index: 2 !important;
+}
 
 .coffey {
   margin-top: 16px;
-  margin-left: 96px;
-  font-family: Geist;
+
   font-weight: 700;
-  font-size: 34px;
+  font-size: 24px;
   line-height: 32px;
+}
+
+.readable {
+  margin: 0 30px;
+  line-height: 20px
+}
+
+.browser-temp {
+  color: black;
+  font-family: 'Geist' !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 24px !important;
 }
 
 .button-para {
@@ -55,14 +251,14 @@
 }
 
 .read {
-  font-family: Geist;
+
   font-size: 24px;
   font-weight: 700;
   text-align: left;
 }
 
 .grade {
-  font-family: Geist;
+
   font-size: 24px;
   font-weight: 600;
   text-align: left;
@@ -70,7 +266,7 @@
 }
 
 .frame {
-  font-family: Geist;
+
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0px;
@@ -79,11 +275,18 @@
 }
 
 .frame-open {
-  font-family: Geist;
   font-size: 16px;
   font-weight: 400;
   line-height: 29px;
   margin: 6px;
+}
+
+.text-left {
+  font-family: 'Geist';
+  font-weight: 700;
+  letter-spacing: -1px;
+  position: fixed;
+  top: 4px;
 }
 
 .number-size {
@@ -95,6 +298,31 @@
   margin-left: 13px;
   text-align: center;
   position: absolute;
+  line-height: 23px;
+  margin-bottom: 18px;
+}
+
+span.veryHardSentence {
+  background: #ffd9d9;
+}
+
+span.hardSentence {
+  background: #ffefd0;
+}
+
+span.adverb {
+  background: #d1f2ff;
+}
+
+span.passive {
+  background: rgb(199, 255, 221);
+}
+span.complex {
+  background: rgb(237, 223, 255);
+}
+
+a.text-black {
+  color: #000 !important;
 }
 
 .paragraph {
@@ -107,11 +335,10 @@
   border-radius: 10px;
   margin-left: 32px;
   line-height: 20px;
-  text-align: justify;
 }
 
 .format-text {
-  font-family: Geist;
+
   font-weight: 400 !important;
   font-size: 16px;
   line-height: 17px;
@@ -131,7 +358,7 @@
   margin: 19px;
   font-size: 24px;
   font-weight: 500;
-  font-family: Geist;
+
   line-height: 32px;
 
 }
@@ -177,12 +404,12 @@
 }
 
 .rewrite-this {
-  font-family: Geist !important;
   font-weight: 600 !important;
   font-size: 20px !important;
   line-height: 24px !important;
 }
-.rewrite-para{
+
+.rewrite-para {
   font-family: Georgia !important;
   font-weight: 400 !important;
   font-size: 20px !important;
@@ -193,20 +420,20 @@
   margin-top: 34px !important;
 }
 
-.rewrite-para2{
+.rewrite-para2 {
   line-height: 76px !important;
-    font-family: Geist !important;
-    font-weight: 500 !important; 
-    font-size: 24px !important;
-    color: #000000 !important;
+  font-family: Geist !important;
+  font-weight: 500 !important;
+  font-size: 24px !important;
+  color: #000000 !important;
 }
 
-.close-icon{
+.close-icon {
   float: right;
   border: 1px solid #E4E5E9;
   border-radius: 10px;
   font-size: 35px !important;
-  
+
 }
 
 /* 4th */
@@ -257,11 +484,11 @@ fieldset.feildsss {
 }
 
 legend {
-margin: 0px 0 0 -40%;
-padding: 5px;
-color: gray;
-font-family: poppins;
-font-size: 14px;
+  margin: 0px 0 0 -40%;
+  padding: 5px;
+  color: gray;
+  font-family: poppins;
+  font-size: 14px;
 }
 
 h4.manage {
@@ -281,33 +508,174 @@ h2.princegauravaj-id {
 }
 
 .love {
-font-family: Georgia;
-font-size: 18px;
-font-weight: 600;
-line-height: 26px;
-}
-h3#or-pr {
-font-size: 20px;
-font-family: Georgia;
-line-height: 56px;
-}
-.btn {
-text-align: center;
-margin-top: 30px;
-}
-button.btn-mob {
-padding: 10px 43px;
-border-radius: 10px;
-border-style: none;
-color: white;
-font-size: 18px;
-background: #2E58FF;
-font-family: poppins;
-}
-section.setall {
-margin: 30px 0;
+  font-family: Georgia;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
 }
 
-.ITOM{
+h3#or-pr {
+  font-size: 20px;
+  font-family: Georgia;
+  line-height: 56px;
+}
+
+.btn {
+  text-align: center;
+  margin-top: 10px;
+}
+
+button.btn-mob {
+  padding: 10px 43px;
+  border-radius: 10px;
+  border-style: none;
+  color: white;
+  font-size: 18px;
+  background: #2E58FF;
+  font-family: poppins;
+}
+
+section.setall {
+  margin: 30px 0;
+}
+
+.ITOM {
   text-align: left;
+}
+
+h3.read_write {
+  color: #000;
+  font-family: Georgia;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 2rem;
+}
+button.button-center {
+  position: absolute;
+  bottom: 20px !important;
+  left: 50% !important;
+  top: unset;
+  transform: translate(-50%,0);
+}
+#rewrite .modal-body {
+  padding-bottom: 80px !important;
+}
+.sidebars .slide-btn {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.sidebars .slide-btn span {
+  font-size: 20px;
+  line-height: 30px;
+  background: rgba(232, 232, 241, 1);
+  padding: 9px 20px;
+  border-radius: 6px;
+}
+@media screen and (max-width:767px) {
+  .sidebars .MuiPaper-root {
+    max-width: 100%;
+    flex: 100%;
+    width: 100% !important;
+    margin-top: 35em;
+    overflow:visible;
+}  
+.App a.link,.App b {
+  font-size: 26px !important;
+  line-height: 36px;
+}
+.sidebars .open-up .MuiPaper-root{
+  margin-top: 350px;
+  max-height: calc(100vh - 45%);
+  padding-bottom: 10px;
+  overflow:auto;
+}
+.open-up .slide-btn span {
+  margin-top: 30px;
+}
+
+  .App .custom-forms {
+    margin-top: 40px !important;
+}
+.sidebars .slide-btn {
+  display: flex;
+  margin-top:-20px;
+}
+.sidebars .slide-btn span{
+  font-size:20px;
+}
+}
+
+
+@media screen and (max-width:480px) {
+  .readable {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .coffey {
+    margin-top: 10px;
+    font-size: 24px;
+    height: fit-content;
+  }
+
+  b.ml-2.mr-2 {
+    font-size: 15px;
+  }
+
+  .choose_text {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+  }
+
+  a.link {
+    font-size: 15px;
+  }
+
+  .inputText {
+    font-size: 18px;
+    margin-top: 2rem;
+  }
+
+  .titles {
+    font-size: 52px;
+    line-height: 73px;
+    margin-top: 91px;
+    margin-left: -43%;
+  }
+
+  .anchor-field {
+    font-size: 52px;
+    margin-top: 218px;
+    display: flow;
+    margin-left: -81%;
+  }
+
+  .MuiDrawer-root.MuiDrawer-docked.css-z1nt7u-MuiDrawer-docked {
+    width: 100%;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .css-z1nt7u-MuiDrawer-docked .MuiDrawer-paper {
+    width: 100% !important;
+    position: relative;
+    padding-bottom: 2rem;
+  }
+
+  .read,
+  .grade {
+    font-size: 20px;
+  }
+
+  .css-1a2fvpw-MuiList-root {
+    max-width: 413px;
+  }
 }
