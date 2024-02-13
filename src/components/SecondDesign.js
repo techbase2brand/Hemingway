@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const SecondDesign = () => {
     return (
         <div class="container-b">
-
             <h1 className='template' style={{ fontWeight: '600' }}>Templates
                 <Link to='/'>
                     <CloseIcon className='close-icon' />
@@ -15,7 +14,6 @@ const SecondDesign = () => {
                 <h2>I made an app that uses Machine Learning to detect & undo photoshopped/edited images</h2>
                 <p class="upvotes">1,000 upvotes</p>
             </div>
-
             <div class="business-idea">
                 <h2>I made a website that removes all the clutter from recipe sites and just shows the instructions (www.JustTheRecipe.app)</h2>
                 <p>999 upvotes</p>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
-import Sidebar from './sidebar';
-
+import { Link } from "react-router-dom";
+import Sidebar from "./sidebar";
 
 export default function Home() {
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
 
   const handleBoxClick = (inputText) => {
@@ -24,8 +23,8 @@ export default function Home() {
     qualifiers: 0, // Add this line
     grade: 0,
   });
-  console.log("data123",data)
-  const [char, setChar] = useState(null)
+  console.log("data123", data);
+  const [char, setChar] = useState(null);
   function getQualifyingWords() {
     return {
       "i believe": 1,
@@ -460,16 +459,14 @@ export default function Home() {
       if (cleanWord.match(/ly$/) && !lyWords.hasOwnProperty(cleanWord)) {
         newData.adverbs += 1;
         processedSentence.push(`<span class="adverb">${word}</span>`);
-        // console.log(`Adverb found: ${word}`); // Logging for debugging
-        // newData.adverbs += 1;
-        // return `<span class="adverb">${word}</span>`;
+
       }
 
       // Check for qualifying phrases
       else {
         let phraseMatch = findQualifyingPhrase(words, i, qualifiers);
         if (phraseMatch.matched) {
-          console.log("phraseMatch",phraseMatch);
+          console.log("phraseMatch", phraseMatch);
           newData.adverbs += 1;
           processedSentence.push(
             `<span class="adverb">${phraseMatch.phrase}</span>`
@@ -496,7 +493,7 @@ export default function Home() {
         }
       }
       if (match) {
-        console.log("match", match)
+        console.log("match", match);
         return {
           matched: true,
           phrase: words
@@ -534,14 +531,15 @@ export default function Home() {
     return sentences;
   };
 
-
   var chars;
   var chars = outputText.replace(/(<([^>]+)>)/gi, "").length;
   const calculateLevel = (letters, words, sentences) => {
     if (words === 0 || sentences === 0) {
       return 0;
     }
-    let level = Math.round(4.71 * (letters / words) + (0.5 * words) / sentences - 21.43);
+    let level = Math.round(
+      4.71 * (letters / words) + (0.5 * words) / sentences - 21.43
+    );
     return level <= 0 ? 0 : level;
   };
 
@@ -554,7 +552,8 @@ export default function Home() {
 
     const syllablesPerWord = syllables / words;
 
-    const gradeLevel = 0.39 * wordsPerSentence + 11.8 * syllablesPerWord - 15.59;
+    const gradeLevel =
+      0.39 * wordsPerSentence + 11.8 * syllablesPerWord - 15.59;
 
     return Math.round(gradeLevel);
   };
@@ -572,7 +571,6 @@ export default function Home() {
       qualifiers: 0,
       grade: 0,
     };
-    console.log("newData435",newData);
     let paragraphs = inputText.split("\n");
     let hardSentences = paragraphs.map((p) =>
       getDifficultSentences(p, newData)
@@ -580,9 +578,12 @@ export default function Home() {
     let inP = hardSentences.map((para) => `<p>${para}</p>`);
     newData.paragraphs = paragraphs.length;
     setOutputText(inP.join(" "));
-    const gradeLevel = calculateGradeLevel(newData.words, newData.sentences, newData.words);
+    const gradeLevel = calculateGradeLevel(
+      newData.words,
+      newData.sentences,
+      newData.words
+    );
     newData.grade = gradeLevel;
-
     setData(newData);
   };
 
@@ -613,7 +614,11 @@ export default function Home() {
         return sent;
       }
     });
-    const gradeLevel = calculateGradeLevel(newData.words, newData.sentences, newData.words);
+    const gradeLevel = calculateGradeLevel(
+      newData.words,
+      newData.sentences,
+      newData.words
+    );
     newData.grade = gradeLevel;
     setData((prevData) => ({
       ...prevData,
@@ -637,7 +642,6 @@ export default function Home() {
         "been",
         "being",
       ];
-
       if (
         currentWord.match(/ed$/) &&
         passiveIndicators.includes(previousWord)
@@ -649,7 +653,6 @@ export default function Home() {
     }
     return words.join(" ");
   };
-
   // Helper function to check if a word is a past participle
   // This function can be expanded with a more comprehensive list of past participles
   function isPastParticiple(word) {
@@ -664,76 +667,105 @@ export default function Home() {
     ];
     return word.match(/ed$/) || commonParticiples.includes(word.toLowerCase());
   }
+
   const getComplex = (sentence, newData) => {
-    console.log("newData before:", newData);
     const complexWordsList = getComplexWords();
-    console.log("complexWordsList",complexWordsList);
     Object.entries(complexWordsList).forEach(([key, value]) => {
-      if (sentence.toLowerCase().includes(key)) {
-      console.log("keykey",key);
+      const phrase = key.split(" "); // Split the key into words to handle phrases
+      console.log("phrasephrase", phrase);
 
-        newData.complex += 1;
-        const regex = new RegExp(key, "gi");
-    console.log("key", key);
-
-        sentence = sentence.replace(regex, `<span class="complex">${key}</span>`);
+      const regexPhrase = phrase.join("\\s+"); // Create a regex pattern to match exact phrases with spaces
+      const regex = new RegExp(`\\b${regexPhrase}\\b`, "gi");
+      // Use word boundaries to match whole words/phrases
+      console.log("regexPhraseregexPhrase", regexPhrase);
+      console.log("regexregex", regex);
+      const matches = sentence.match(regex);
+      console.log("matches", matches);
+      if (matches) {
+        newData.complex += matches.length; // Increment complex count for each match
+        sentence = sentence.replace(
+          regex,
+          `<span class="complex">${matches[0]}</span>`
+        );
       }
     });
+
     return sentence;
   };
-  
+
   function countComplexWords(text) {
     const complexWords = getComplexWords();
     const lowercaseText = text.toLowerCase();
     let complexWordCount = 0;
     let outputText = text; // Initialize the output text with the original text
-  
-    Object.keys(complexWords).forEach(word => {
-      const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(`\\b${escapedWord}\\b`, 'gi');
+
+    Object.keys(complexWords).forEach((word) => {
+      const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(`\\b${escapedWord}\\b`, "gi");
       const matches = lowercaseText.match(regex);
       if (matches) {
-        outputText = outputText.replace(regex, `<span class="complex">${matches[0]}</span>`);
+        outputText = outputText.replace(
+          regex,
+          `<span class="complex">${matches[0]}</span>`
+        );
         complexWordCount += matches.length;
       }
     });
-  
+
     return { count: complexWordCount, output: outputText };
   }
-  
+
   useEffect(() => {
-    const { count: numberOfComplexWords, output: outputText } = countComplexWords(inputText);
-    setData(prevData => ({
+    const { count: numberOfComplexWords, output: outputText } =
+      countComplexWords(inputText);
+    setData((prevData) => ({
       ...prevData,
       complex: numberOfComplexWords,
       outputText: outputText, // Add the output text to the state
     }));
   }, [inputText]);
-  
 
   return (
     <div className="container-fluid">
-      <h1 className='coffey text-left'>
-        Coffey
-      </h1>
+      <h1 className="coffey text-left">Coffey</h1>
       <div className="row  mt-5">
         <div className="col-md-4 m-auto">
           <h3 className="inputText mb-4">
-            <div className="inputText" id="output" dangerouslySetInnerHTML={{ __html: outputText }}></div>
+            <div
+              className="inputText"
+              id="output"
+              dangerouslySetInnerHTML={{ __html: outputText }}
+            ></div>
           </h3>
-          <a className="link" data-toggle="modal" data-target="#exampleModal">Start with a template</a>
+          <a className="link" data-toggle="modal" data-target="#exampleModal">
+            Start with a template
+          </a>
           <b className="ml-2 mr-2">or</b>
-          <Link to='/coffey' className="link">write from scratch</Link>
+          <Link to="/coffey" className="link">
+            write from scratch
+          </Link>
         </div>
       </div>
 
-
-      <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
         <div className="modal-dialog modal-lg">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Templates</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Templates
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -741,44 +773,120 @@ export default function Home() {
               <div className="choose_text mb-3">
                 <h2>Choose a title from </h2>
                 <div className="dropdown entre">
-                  <button className="btn btn-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button
+                    className="btn btn-outline dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
                     r/entrepreneur
                   </button>
-                  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item" href="#">Action</a>
-                    <a className="dropdown-item" href="#">Another action</a>
-                    <a className="dropdown-item" href="#">Something else here</a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a className="dropdown-item" href="#">
+                      Action
+                    </a>
+                    <a className="dropdown-item" href="#">
+                      Another action
+                    </a>
+                    <a className="dropdown-item" href="#">
+                      Something else here
+                    </a>
                   </div>
                 </div>
               </div>
 
-              <div className="border p-3 border-rounded" data-dismiss="modal" onClick={() => handleBoxClick(`accede to abundance`)}>
-                <h5 className="text_heading">Coffey helps you write catchy Reddit titles so that more people see your post.</h5>
+              <div
+                className="border p-3 border-rounded"
+                data-dismiss="modal"
+                onClick={() => handleBoxClick(`accede to abundance`)}
+              >
+                <h5 className="text_heading">
+                  Coffey helps you write catchy Reddit titles so that more
+                  people see your post.
+                </h5>
                 <p className="upvote">1,000 upvotes</p>
               </div>
-              <div className="border p-3 border-rounded" data-dismiss="modal" onClick={() => handleBoxClick('adjustment additional acquire acquiesce accrue accorded accorded accentuate adjustment')}>
-                <h5 className="text_heading">I made a website that removes all the clutter from recipe sites and just shows the instructions (www.JustTheRecipe.app)</h5>
+              <div
+                className="border p-3 border-rounded"
+                data-dismiss="modal"
+                onClick={() =>
+                  handleBoxClick(
+                    "adjustment additional acquire acquiesce accrue accorded accorded accentuate adjustment"
+                  )
+                }
+              >
+                <h5 className="text_heading">
+                  I made a website that removes all the clutter from recipe
+                  sites and just shows the instructions (www.JustTheRecipe.app)
+                </h5>
                 <p className="upvote">999 upvotes</p>
               </div>
-              <div className="border p-3 border-rounded" data-dismiss="modal" onClick={() => handleBoxClick('I made a website where you have to guest if a Trump tweet is real or fake. I compiled 40 crazy real tweets and 40 fake tweets. It’s surprisingly hard!')}>
-                <h5 className="text_heading">I made a website where you have to guest if a Trump tweet is real or fake. I compiled 40 crazy real tweets and 40 fake tweets. It’s surprisingly hard!</h5>
+              <div
+                className="border p-3 border-rounded"
+                data-dismiss="modal"
+                onClick={() =>
+                  handleBoxClick(
+                    "I made a website where you have to guest if a Trump tweet is real or fake. I compiled 40 crazy real tweets and 40 fake tweets. It’s surprisingly hard! i don't believe"
+                  )
+                }
+              >
+                <h5 className="text_heading">
+                  I made a website where you have to guest if a Trump tweet is
+                  real or fake. I compiled 40 crazy real tweets and 40 fake
+                  tweets. It’s surprisingly hard!
+                </h5>
                 <p className="upvote">998 upvotes</p>
               </div>
-              <div className="border p-3 border-rounded" data-dismiss="modal" onClick={() => handleBoxClick('I made a website that removes all the clutter from recipe sites and just shows the instructions (www.JustTheRecipe.app)')}>
-                <h5 className="text_heading">I made a website that removes all the clutter from recipe sites and just shows the instructions (www.JustTheRecipe.app)</h5>
+              <div
+                className="border p-3 border-rounded"
+                data-dismiss="modal"
+                onClick={() =>
+                  handleBoxClick(
+                    "I made a website that removes all the clutter from recipe sites and just shows the instructions (www.JustTheRecipe.app)"
+                  )
+                }
+              >
+                <h5 className="text_heading">
+                  I made a website that removes all the clutter from recipe
+                  sites and just shows the instructions (www.JustTheRecipe.app)
+                </h5>
                 <p className="upvote">998 upvotes</p>
               </div>
-              <div className="border p-3 border-rounded" data-dismiss="modal" onClick={() => handleBoxClick('I made an app that uses Machine Learning to detect & undo photoshopped/edited images')}>
-                <h5 className="text_heading">I made an app that uses Machine Learning to detect & undo photoshopped/edited images</h5>
+              <div
+                className="border p-3 border-rounded"
+                data-dismiss="modal"
+                onClick={() =>
+                  handleBoxClick(
+                    "I made an app that uses Machine Learning to detect & undo photoshopped/edited images"
+                  )
+                }
+              >
+                <h5 className="text_heading">
+                  I made an app that uses Machine Learning to detect & undo
+                  photoshopped/edited images
+                </h5>
                 <p className="upvote">998 upvotes</p>
               </div>
-              <div className="border p-3 border-rounded" data-dismiss="modal" onClick={() => handleBoxClick(`In the eerie silence of the night, the abandoned mansion was stealthily explored by the intrepid adventurer. Shadows danced ominously across the crumbling walls as each step was cautiously taken. With bated breath, the ancient secrets of the mansion were unraveled, layer by layer. The chilling wind whispered hauntingly through the corridors, adding to the sense of foreboding that permeated the air. Suddenly, a faint glimmer caught the adventurer's eye, leading them deeper into the heart of darkness. With every passing moment, the mystery grew more tantalizing, drawing the explorer further into its enigmatic embrace. Finally, as dawn broke on the horizon, the truth was revealed in all its horrifying glory, shattering the illusion of safety that had surrounded the intrepid soul.
-                Hard Sentence: The labyrinthine passages of the mansion posed an insurmountable challenge to even the most seasoned explorer.Very Hard Sentence: Amidst the labyrinthine corridors of the decrepit mansion, a cacophony of whispers echoed incessantly, hinting at the unfathomable horrors that lay dormant within its ancient confines.`)}>
-                <h5 className="text_heading">I made a website that removes all the clutter from recipe sites and just shows the instructions (www.JustTheRecipe.app)</h5>
+              <div
+                className="border p-3 border-rounded"
+                data-dismiss="modal"
+                onClick={() =>
+                  handleBoxClick(`In the eerie silence of the night, the abandoned mansion was stealthily explored by the intrepid adventurer. Shadows danced ominously across the crumbling walls as each step was cautiously taken. With bated breath, the ancient secrets of the mansion were unraveled, layer by layer. The chilling wind whispered hauntingly through the corridors, adding to the sense of foreboding that permeated the air. Suddenly, a faint glimmer caught the adventurer's eye, leading them deeper into the heart of darkness. With every passing moment, the mystery grew more tantalizing, drawing the explorer further into its enigmatic embrace. Finally, as dawn broke on the horizon, the truth was revealed in all its horrifying glory, shattering the illusion of safety that had surrounded the intrepid soul.
+                Hard Sentence: The labyrinthine passages of the mansion posed an insurmountable challenge to even the most seasoned explorer.Very Hard Sentence: Amidst the labyrinthine corridors of the decrepit mansion, a cacophony of whispers echoed incessantly, hinting at the unfathomable horrors that lay dormant within its ancient confines. `)
+                }
+              >
+                <h5 className="text_heading">
+                  I made a website that removes all the clutter from recipe
+                  sites and just shows the instructions (www.JustTheRecipe.app)
+                </h5>
                 <p className="upvote">998 upvotes</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -786,5 +894,3 @@ export default function Home() {
     </div>
   );
 }
-
-
