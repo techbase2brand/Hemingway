@@ -581,7 +581,7 @@ button.button-center {
     width: 100% !important;
     margin-top: 35em;
     overflow:visible;
-}  
+}
 .App a.link,.App b {
   font-size: 26px !important;
   line-height: 36px;
@@ -679,3 +679,7 @@ button.button-center {
     max-width: 413px;
   }
 }
+
+
+
+
